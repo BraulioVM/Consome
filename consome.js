@@ -13,15 +13,35 @@ var C = (function(){
 		return request;
 	};
 
+	function _getResponseDataObject(responseText){
+		var data;
+		try {
+			data = JSON.parse(responseText);
+			}
+		catch (e){
+			data = { responseText: responseText };
+		}
+		return data;
+	};
+
 	function _readyStateChangeCB(request, fn, err_fn){
 		var result = function(){
 			if (request.readyState == 4){
-				var data = JSON.parse(request.responseText);
+				
+				var data = _getResponseDataObject(request.responseText);
+
 				if (request.status == 200){
 					fn(data);
 				}
 				else {
-					err_fn({ error: request.status, data: data });
+					var e_data = { error: request.status, data: data };
+
+					if(err_fn instanceof Function){
+						err_fn(e_data);
+					}
+					else {
+						console.error(e_data);
+					}
 				}
 			}
 		};
@@ -66,7 +86,7 @@ var C = (function(){
 	c.post = getFunctionForMethod("POST", false);
 	c.put = getFunctionForMethod("PUT", false);
 	c.delete = getFunctionForMethod("DELETE", false);
-	
+
 
 	return c;
 })();
