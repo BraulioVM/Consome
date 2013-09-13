@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Basic GET example with Consomé </title>
+	<script src="../../consome.js"></script>
+	<script>
+		window.addEventListener("load", function(){
+			C.post("data.json", {}, function(data){
+				console.log(data);
+				document.getElementById("placeholder").innerText = data.info;
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1 id="placeholder"> </h1>
+</body>
+</html>
