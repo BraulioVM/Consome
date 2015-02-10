@@ -1,6 +1,14 @@
 # Consomé
 An AJAX microframework for JSON requests. Everything works as you'd expect (using promises)
 
+
+## Install
+
+Install it with bower
+```
+	bower install http://github.com/BraulioVM/Consome.git
+```
+
 ## Examples
 You want to GET some stuff
 ```javascript
