@@ -1,10 +1,10 @@
 # Consomé
-An AJAX microframework for JSON requests. Everything works as you'd expect
+An AJAX microframework for JSON requests. Everything works as you'd expect (using promises)
 
 ## Examples
 You want to GET some stuff
 ```javascript
-	C.get(url, query_params, function(data){
+	C.get(url, query_params).then(function(data){
 		// data is the json response
 		console.log(data);
 	});
@@ -13,7 +13,7 @@ You want to GET some stuff
 You want to POST some data
 
 ```javascript
-	C.post("/news", { headline: "...", body: "..." }, fn, function errorCallback(err){
+	C.post("/news", { headline: "...", body: "..." }.then(fn, function errorCallback(err){
 		var code = err.status; // HTTP RESPONSE CODE
 		var s_response = err.data; // JSON GIVEN BY THE SERVER
 		...

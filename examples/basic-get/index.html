@@ -6,10 +6,18 @@
 	<script src="../../consome.js"></script>
 	<script>
 		window.addEventListener("load", function(){
-			C.post("data.json", {}, function(data){
-				console.log(data);
-				document.getElementById("placeholder").innerText = data.info;
+			C.get("data.json", {}).then(function(data){
+				alert(data["Hello"]);
+				document.getElementById("placeholder").innerText = data["info"];
 			});
+
+
+
+			C.post("noexiste", {}).then(function(){
+				console.log("this will never fire");
+			}, function(){
+				console.log("The error was actually expected");
+			})
 		});
 	</script>
 </head>

@@ -58,22 +58,26 @@ var C = (function(){
 	}
 
 	function getFunctionForMethod(method_name, parameters_in_url){
-		var result = function(url, params, fn, err_fn){
-			var request = _getRequestObject();
-			request.onreadystatechange = _readyStateChangeCB(request, fn, err_fn);
+		var result = function(url, params){
 
-			var request_params;
+			return new Promise(function(fullfill, reject){
+				var request = _getRequestObject();
+				request.onreadystatechange = _readyStateChangeCB(request, fullfill, reject);
 
-			if(parameters_in_url === true){
-				url += "?" + _serializeParams(params);
-				request_params = null;
-			}
-			else {
-				request_params = _serializeParams(params);
-			}
+				var request_params;
 
-			request.open(method_name, url, true);
-			request.send(request_params);
+				if(parameters_in_url === true){
+					url += "?" + _serializeParams(params);
+					request_params = null;
+				}
+				else {
+					request_params = _serializeParams(params);
+				}
+
+				request.open(method_name, url, true);
+				request.send(request_params);
+
+			});;
 
 		};
 

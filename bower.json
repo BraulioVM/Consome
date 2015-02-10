@@ -1,0 +1,21 @@
+{
+  "name": "Consome",
+  "version": "0.0.1",
+  "homepage": "https://github.com/BraulioVM/Consome",
+  "authors": [
+    "Braulio Valdivielso Martínez <brlvldvlsmrtnz@gmail.com>"
+  ],
+  "description": "Make ajax requests easily, weightlessly",
+  "main": "consome.js",
+  "keywords": [
+    "ajax"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
